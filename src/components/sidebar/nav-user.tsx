@@ -1,6 +1,7 @@
 "use client";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -28,6 +29,7 @@ import {
   LogOutIcon,
   SparklesIcon,
 } from "lucide-react";
+
 import { SignoutButton } from "../auth/signout-button";
 
 export function NavUser({ user }: { user: User }) {

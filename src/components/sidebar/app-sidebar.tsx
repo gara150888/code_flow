@@ -35,16 +35,6 @@ const data = {
       ],
     },
     {
-      title: "Integrations",
-      url: "/integrations",
-      icon: <PlugZap />,
-      items: [
-        { title: "Instagram", url: "/integrations/instagram" },
-        { title: "Slack", url: "/integrations/slack" },
-        { title: "GitHub", url: "/integrations/github" },
-      ],
-    },
-    {
       title: "Profile",
       url: "/profile",
       icon: <UserIcon />,
