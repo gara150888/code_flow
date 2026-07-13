@@ -6,9 +6,13 @@ import { createTRPCReact } from "@trpc/react-query";
 import { type inferRouterInputs, type inferRouterOutputs } from "@trpc/server";
 import { useState } from "react";
 import SuperJSON from "superjson";
+// import { createTRPCContext } from "@trpc/tanstack-react-query";
 
 import { type AppRouter } from "@/server/api/root";
 import { createQueryClient } from "./query-client";
+
+export const api = createTRPCReact<AppRouter>();
+// export const { TRPCProvider, useTRPC } = createTRPCContext<AppRouter>();
 
 let clientQueryClientSingleton: QueryClient | undefined = undefined;
 const getQueryClient = () => {
@@ -21,8 +25,6 @@ const getQueryClient = () => {
 
   return clientQueryClientSingleton;
 };
-
-export const api = createTRPCReact<AppRouter>();
 
 /**
  * Inference helper for inputs.
