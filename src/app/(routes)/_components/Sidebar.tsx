@@ -17,8 +17,15 @@ import {
 import ToolTipWrapper from "@/components/ui/ToolTipWrapper";
 import { ChevronLeftIcon, ChevronRightIcon } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
+import type { User } from "better-auth";
 
-export default function SideBard({ children }: { children: React.ReactNode }) {
+export default function SideBard({
+  children,
+  user,
+}: {
+  children: React.ReactNode;
+  user: User;
+}) {
   const pathname = usePathname()
     .split("/")
     .filter((r) => r);
@@ -26,7 +33,7 @@ export default function SideBard({ children }: { children: React.ReactNode }) {
 
   return (
     <SidebarProvider>
-      <AppSidebar />
+      <AppSidebar user={user} />
       <SidebarInset>
         <header className="flex h-16 shrink-0 items-center gap-2 transition-[width,height] ease-linear group-has-data-[collapsible=icon]/sidebar-wrapper:h-12">
           <div className="flex w-full items-center gap-2 px-4">

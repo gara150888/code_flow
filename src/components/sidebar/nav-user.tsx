@@ -18,7 +18,7 @@ import {
   useSidebar,
 } from "@/components/ui/sidebar";
 
-import { api } from "@/trpc/react";
+import type { User } from "better-auth";
 
 import {
   BadgeCheckIcon,
@@ -30,17 +30,11 @@ import {
 } from "lucide-react";
 import { SignoutButton } from "../auth/signout-button";
 
-export function NavUser() {
+export function NavUser({ user }: { user: User }) {
+
   const { isMobile } = useSidebar();
-  const { data, isLoading } = api.user.session.useQuery();
 
-  console.log(data);
-
-  if (isLoading || !data?.user) {
-    return null;
-  }
-
-  const userProfile = data.user;
+  const userProfile = user;
 
   return (
     <SidebarMenu>
@@ -77,11 +71,11 @@ export function NavUser() {
                 <div className="flex items-center gap-2 px-1 py-1.5 text-left text-sm">
                   <Avatar>
                     <AvatarImage
-                      src={userProfile?.image || ""}
-                      alt={userProfile?.name || "User"}
+                      src={userProfile?.image ?? ""}
+                      alt={userProfile?.name ?? "User"}
                     />
                     <AvatarFallback>
-                      {userProfile?.name?.charAt(0) || "U"}
+                      {userProfile?.name?.charAt(0) ?? "U"}
                     </AvatarFallback>
                   </Avatar>
                   <div className="grid flex-1 text-left text-sm leading-tight">

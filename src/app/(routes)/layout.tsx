@@ -10,5 +10,5 @@ export default async function Page({
   const session = await getSession();
   if (!session) return redirect("/login");
 
-  return <Sidebar>{children}</Sidebar>;
+  return <Sidebar user={session.user}>{children}</Sidebar>;
 }

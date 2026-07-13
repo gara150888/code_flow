@@ -1,10 +1,7 @@
 "use client";
-
-import {
-  NavMain,
-  NavUser,
-  TeamSwitcher,
-} from "@/components/sidebar";
+import type { ComponentProps } from "react";
+import { NavMain, NavUser, TeamSwitcher } from "@/components/sidebar";
+import type { User } from "better-auth";
 
 import {
   Sidebar,
@@ -53,7 +50,7 @@ const data = {
       icon: <UserIcon />,
       items: [
         { title: "Overview", url: "/profile" },
-        { title: "Edit Profile", url: "/profile/edit" }, 
+        { title: "Edit Profile", url: "/profile/edit" },
       ],
     },
     {
@@ -73,7 +70,11 @@ const data = {
   ],
 };
 
-export function AppSidebar({ ...props }) {
+type AppSidebarProps = ComponentProps<typeof Sidebar> & {
+  user: User;
+};
+
+export function AppSidebar({ user, ...props }: AppSidebarProps) {
   return (
     <Sidebar collapsible="icon" {...props}>
       <SidebarHeader>
@@ -83,7 +84,7 @@ export function AppSidebar({ ...props }) {
         <NavMain items={data.navMain} />
       </SidebarContent>
       <SidebarFooter>
-        <NavUser />
+        <NavUser user={user} />
       </SidebarFooter>
       <SidebarRail />
     </Sidebar>
