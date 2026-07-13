@@ -5,6 +5,8 @@
 /.pnp
 .pnp.js
 drizzle*
+bun.lock
+.zed
 
 # testing
 /coverage
