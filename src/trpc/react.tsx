@@ -10,6 +10,8 @@ import SuperJSON from "superjson";
 import { type AppRouter } from "@/server/api/root";
 import { createQueryClient } from "./query-client";
 
+export const api = createTRPCReact<AppRouter>();
+
 let clientQueryClientSingleton: QueryClient | undefined = undefined;
 const getQueryClient = () => {
   if (typeof window === "undefined") {
@@ -21,8 +23,6 @@ const getQueryClient = () => {
 
   return clientQueryClientSingleton;
 };
-
-export const api = createTRPCReact<AppRouter>();
 
 /**
  * Inference helper for inputs.
