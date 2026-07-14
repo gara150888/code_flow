@@ -1,4 +1,4 @@
-import Sidebar from "./_components/Sidebar";
+import SidebarWrapper from "./dashboard/_components/SidebarWrapper";
 import { getSession } from "@/lib/auth";
 import { redirect } from "next/navigation";
 
@@ -10,5 +10,5 @@ export default async function Page({
   const session = await getSession();
   if (!session) return redirect("/login");
 
-  return <Sidebar user={session.user}>{children}</Sidebar>;
+  return <SidebarWrapper user={session.user}>{children}</SidebarWrapper>;
 }
