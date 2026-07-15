@@ -3,6 +3,7 @@ import type { workflow } from '@/server/db/schema'
 import type { InferSelectModel } from 'drizzle-orm'
 import { ReactFlowProvider } from '@xyflow/react'
 import FlowEditor from "./FlowEditor";
+import TaskMenu from './TaskMenu';
 
 type Workflow = InferSelectModel<typeof workflow>
 
@@ -16,7 +17,7 @@ const Editor = ({ workflow }: { workflow: Workflow }) => {
                     workflowId={workflow.id}
                 /> */}
                 <section className="flex h-full overflow-auto">
-                    {/* <TaskMenu /> */}
+                    <TaskMenu />
                     <FlowEditor workflow={workflow} />
                 </section>
             </div>

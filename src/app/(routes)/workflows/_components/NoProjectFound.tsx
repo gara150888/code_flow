@@ -1,6 +1,5 @@
-import { ArrowUpRightIcon, FileIcon, FileTextIcon } from "lucide-react"
+import { FileTextIcon } from "lucide-react"
 
-import { Button } from "@/components/ui/button"
 import {
     Empty,
     EmptyContent,
@@ -10,9 +9,8 @@ import {
     EmptyTitle,
 } from "@/components/ui/empty"
 
-export default function NoProjectFound() {
+export default function NoProjectFound({ children }: { children: React.ReactNode }) {
     return (
-
         <Empty>
             <EmptyHeader>
                 <EmptyMedia className="rounded-full" variant="icon">
@@ -25,7 +23,7 @@ export default function NoProjectFound() {
                 </EmptyDescription>
             </EmptyHeader>
             <EmptyContent className="flex-row justify-center gap-2">
-                <Button className={'w-1/2'}>Create Workflow</Button>
+                {children}
             </EmptyContent>
         </Empty>
 

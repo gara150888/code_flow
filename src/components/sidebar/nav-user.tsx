@@ -8,8 +8,12 @@ import {
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuLabel,
+  DropdownMenuPortal,
   DropdownMenuSeparator,
-  DropdownMenuTrigger,
+  DropdownMenuSub,
+  DropdownMenuSubContent,
+  DropdownMenuSubTrigger,
+  DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 
 import {
@@ -28,11 +32,15 @@ import {
   CreditCardIcon,
   LogOutIcon,
   SparklesIcon,
+  Sun,
+  UserIcon,
 } from "lucide-react";
 
 import { SignoutButton } from "../auth/signout-button";
+import { useTheme } from "next-themes";
 
 export function NavUser({ user }: { user: User }) {
+  const { setTheme } = useTheme()
 
   const { isMobile } = useSidebar();
 
@@ -102,6 +110,21 @@ export function NavUser({ user }: { user: User }) {
               <DropdownMenuItem>
                 <BadgeCheckIcon className="mr-2 h-4 w-4" /> Account
               </DropdownMenuItem>
+
+              <DropdownMenuSub>
+                <DropdownMenuSubTrigger>
+                  <Sun className="mr-2 h-4 w-4" />
+                  Theme
+                </DropdownMenuSubTrigger>
+                <DropdownMenuPortal>
+                  <DropdownMenuSubContent>
+                    <DropdownMenuItem onClick={() => setTheme("light")}>Light</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setTheme("dark")}>Dark</DropdownMenuItem>
+                    <DropdownMenuItem onClick={() => setTheme("system")}>System</DropdownMenuItem>
+                  </DropdownMenuSubContent>
+                </DropdownMenuPortal>
+              </DropdownMenuSub>
+
               <DropdownMenuItem>
                 <CreditCardIcon className="mr-2 h-4 w-4" />
                 Billing
