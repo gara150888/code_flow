@@ -1,7 +1,7 @@
 "use client";
-import type { ComponentProps } from "react";
 import { NavMain, NavUser, TeamSwitcher } from "@/components/sidebar";
 import type { User } from "better-auth";
+import type { ComponentProps } from "react";
 
 import {
   Sidebar,
@@ -12,13 +12,13 @@ import {
 } from "@/components/ui/sidebar";
 
 import {
-  TerminalSquareIcon,
-  PlugZap,
-  Settings2Icon,
   FrameIcon,
-  PieChartIcon,
   MapIcon,
+  PieChartIcon,
+  Settings2Icon,
+  TerminalSquareIcon,
   UserIcon,
+  WorkflowIcon
 } from "lucide-react";
 
 const data = {
@@ -28,6 +28,17 @@ const data = {
       url: "/dashboard",
       icon: <TerminalSquareIcon />,
       isActive: true,
+      items: [
+        { title: "History", url: "#" },
+        { title: "Starred", url: "#" },
+        { title: "Settings", url: "#" },
+      ],
+    },
+    {
+      title: "WorkFlows",
+      url: "/workflows",
+      icon: <WorkflowIcon />,
+      isActive: false,
       items: [
         { title: "History", url: "#" },
         { title: "Starred", url: "#" },

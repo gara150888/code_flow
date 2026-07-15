@@ -63,3 +63,19 @@ export const profile = pgTable("profile", {
   createdAt: timestamp("created_at"),
   updatedAt: timestamp("updated_at"),
 });
+
+export const workflow = pgTable("workflow", {
+  id: text("id").primaryKey(),
+  userId: text("user_id")
+    .notNull()
+    .references(() => user.id, { onDelete: "cascade" }),
+  name: text("name")
+    .notNull()
+    .unique(),
+  description: text("description"),
+  definition: text("definition"),
+  status: text("status")
+    .notNull(),
+  createdAt: timestamp("created_at").defaultNow(),
+  updatedAt: timestamp("updated_at").defaultNow().$onUpdateFn(() => new Date()),
+});
