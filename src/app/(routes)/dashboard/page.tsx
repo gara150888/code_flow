@@ -1,11 +1,7 @@
-import { stream } from "@/module/gpt/v1";
+"use client";
 
-export default async function Page() {
-  let text = "";
+import Board from "./_components/Board";
 
-  for await (const chunk of stream("Hello")) {
-    text += chunk || "";
-  }
-
-  return <pre>{text}</pre>;
+export default function Page() {
+  return <Board />;
 }
