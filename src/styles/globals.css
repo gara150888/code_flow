@@ -49,7 +49,7 @@
 }
 
 :root {
-  --theme-hue: 55;
+  --theme-hue: 40.141;
 
   --brand-50: oklch(0.979 0.021 var(--theme-hue));
   --brand-100: oklch(0.845 0.143 var(--theme-hue));
@@ -73,10 +73,10 @@
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
 
-  --muted: oklch(0.966 0.005 106.5);
+  --muted: oklch(0.966 0.005 var(--theme-hue));
   --muted-foreground: oklch(0.58 0.031 107.3);
 
-  --accent: var(--brand-100);
+  --accent: oklch(0.845 0.143 var(--theme-hue) / 0.23);
   --accent-foreground: var(--brand-500);
 
   --destructive: oklch(0.577 0.245 27.325);
@@ -98,8 +98,8 @@
 
   --sidebar-primary-foreground: var(--brand-50);
 
-  --sidebar-accent: var(--brand-100);
-  --sidebar-accent-foreground: var(--brand-500);
+  --sidebar-accent: oklch(0.845 0.143 var(--theme-hue) / 0.23);
+  --sidebar-accent-foreground: var(--brand-400);
 
   --sidebar-border: var(--border);
   --sidebar-ring: var(--brand-300);

@@ -27,7 +27,15 @@ const Page = () => {
     return (
         <div className='flex flex-col flex-1'>
 
-            {!workflows ? <NoProjectFound /> :
+            {!workflows ? <Dialog open={workFlowModal} onOpenChange={setWorkFlowModal}>
+                <NoProjectFound>
+                    <DialogTrigger render={<Button className={'w-1/2'}>Create workflow</Button>} />
+                </NoProjectFound >
+                <DialogContent className="p-0" showCloseButton={false}>
+                    <WorkFlowPopOver setWorkFlowModal={setWorkFlowModal} />
+                </DialogContent>
+            </Dialog>
+                :
                 (
                     <div className="flex flex-col">
                         <div className="flex flex-row items-center justify-between gap-4 py-6 px-12">

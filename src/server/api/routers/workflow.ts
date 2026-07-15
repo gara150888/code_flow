@@ -6,10 +6,10 @@ import { db } from "@/server/db";
 import { workflow } from "@/server/db/schema";
 import { workflowSchema } from "@/schema/workflow";
 
-// import { CreateFlowNode } from "@/lib/workflow/createFlowNode";
-// import type { AppNode } from "@/types/appNode";
-// import { TaskType } from "@/types/task";
-// import type { Edge } from "@xyflow/react";
+import { CreateFlowNode } from "@/workflow/createFlowNode";
+import type { AppNode } from "@/types/appnode";
+import { TaskType } from "@/types/task";
+import type { Edge } from "@xyflow/react";
 
 import { z } from "zod";
 import { and } from "drizzle-orm";
@@ -20,12 +20,12 @@ export const workflowRouter = createTRPCRouter({
         .input(workflowSchema)
         .mutation(async ({ ctx, input }) => {
 
-            // const initialFlow: { nodes: AppNode[], edges: Edge[] } = {
-            //     nodes: [],
-            //     edges: []
-            // };
+            const initialFlow: { nodes: AppNode[], edges: Edge[] } = {
+                nodes: [],
+                edges: []
+            };
 
-            // initialFlow.nodes.push(CreateFlowNode(TaskType.LAUNCH_BROWSER))
+            initialFlow.nodes.push(CreateFlowNode(TaskType.INITIALIZE_CHAT))
 
             const [newWorkflow] = await db
                 .insert(workflow)
@@ -34,7 +34,7 @@ export const workflowRouter = createTRPCRouter({
                     userId: ctx.user.id,
                     name: input.name,
                     status: input.status ?? "draft",
-                    definition: "{}",
+                    definition: JSON.stringify(initialFlow),
                     description: input.description
                 })
                 .returning();
